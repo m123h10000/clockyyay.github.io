@@ -1,0 +1,170 @@
+/* color palette from <https://github.com/vuejs/theme> */
+:root {
+  --vt-c-white: #ffffff;
+  --vt-c-white-soft: #f8f8f8;
+  --vt-c-white-mute: #f2f2f2;
+
+  --vt-c-black: #181818;
+  --vt-c-black-soft: #222222;
+  --vt-c-black-mute: #282828;
+
+  --vt-c-blue: #3115e5;
+  --vt-c-blue-soft: #76a2f4;
+  --vt-c-blue-mute: #887fc5;
+
+  --vt-c-text-light-1: var(--vt-c-indigo);
+  --vt-c-text-light-2: rgba(60, 60, 60, 0.66);
+  --vt-c-text-dark-1: var(--vt-c-white);
+  --vt-c-text-dark-2: rgba(235, 235, 235, 0.64);
+}
+
+:root {
+  --color-background: var(--vt-c-white);
+  --color-background-soft: var(--vt-c-white-soft);
+  --color-background-mute: var(--vt-c-white-mute);
+
+  --color-border: var(--vt-c-divider-light-2);
+  --color-border-hover: var(--vt-c-divider-light-1);
+
+  --color-heading: var(--vt-c-text-light-1);
+  --color-text: var(--vt-c-text-light-1);
+  --color-description: var(--vt-c-text-light-2);
+  --color-link: var(--vt-c-blue);
+}
+
+.is-night {
+  --color-background: var(--vt-c-black);
+  --color-background-soft: var(--vt-c-black-soft);
+  --color-background-mute: var(--vt-c-black-mute);
+
+  --color-border: var(--vt-c-divider-dark-2);
+  --color-border-hover: var(--vt-c-divider-dark-1);
+
+  --color-heading: var(--vt-c-text-dark-1);
+  --color-text: var(--vt-c-text-dark-2);
+  --color-description: var(--vt-c-text-dark-1);
+  --color-link: var(--vt-c-blue-soft);
+}
+
+.is-iframe {
+  --color-background: transparent;
+  --color-background-soft: transparent;
+  --color-background-mute: transparent;
+
+  --color-border: var(--vt-c-divider-light-2);
+  --color-border-hover: var(--vt-c-divider-light-1);
+
+  --color-heading: var(--vt-c-text-light-1);
+  --color-text: var(--vt-c-text-light-1);
+  --color-description: var(--vt-c-text-light-2);
+  --color-link: var(--vt-c-blue);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  font-weight: normal;
+  margin: 0;
+  position: relative;
+}
+
+body {
+  background: transparent;
+  color: var(--color-text);
+  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-size: 15px;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.6;
+  min-height: 100vh;
+  text-align: center;
+  text-rendering: optimizeLegibility;
+  transition: color 0.5s, background-color 0.5s;
+}
+
+.screen {
+  background-color: var(--color-background);
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+  place-items: center;
+  width: 100vw;
+}
+
+.credits {
+  align-items: center;
+  background-color: var(--color-background);
+  color: var(--color-description);
+  display: flex;
+  line-height: 1;
+  margin: 0 auto;
+  padding: 0.25em 0.4em;
+  position: absolute;
+  right: 0.25em;
+  top: 0.25em;
+
+  a {
+    color: var(--color-link);
+  }
+
+  &__concept {
+    align-items: center;
+    display: flex;
+    margin-right: 0.75em;
+
+    &-label {
+      margin-left: 0.25em;
+    }
+
+    .is-iframe & {
+      display: none;
+    }
+  }
+
+  &__code {
+    align-items: center;
+    display: flex;
+
+    &-label {
+      margin-left: 0.25em;
+    }
+
+    &-icon {
+      height: 1.75em;
+      width: 1.75em;
+
+      .is-night & {
+        filter: invert(1);
+      }
+
+      .is-iframe & {
+        opacity: 0.5;
+      }
+    }
+
+    .is-iframe & {
+      display: none;
+    }
+  }
+
+  &__source {
+    color: var(--color-text);
+    display: none;
+    margin-left: 0.75em;
+
+    &-icon {
+      line-height: 1;
+      width: 2.25em;
+
+      .is-night & {
+        filter: invert(1);
+      }
+    }
+
+    .is-iframe & {
+      display: flex;
+    }
+  }
+}
